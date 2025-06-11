@@ -1,15 +1,19 @@
 import random
 
+victorias_x = 0
+victorias_o = 0
+
 def crear_tablero():
-    tablero = [[" ", " ", " "],[" ", " ", " "],[" ", " ", " "]]  
-    return tablero 
+    tablero = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    return tablero
 
 def imprimir_tablero(tablero):
-    print(f"{tablero[0][0]}|{tablero[0][1]}|{tablero[0][2]}")
-    print("-----")
-    print(f"{tablero[1][0]}|{tablero[1][1]}|{tablero[1][2]}")
-    print("-----")
-    print(f"{tablero[2][0]}|{tablero[2][1]}|{tablero[2][2]}")
+    print(f" 0 1 2")
+    print(f"0{tablero[0][0]}|{tablero[0][1]}|{tablero[0][2]}")
+    print(" -----")
+    print(f"1{tablero[1][0]}|{tablero[1][1]}|{tablero[1][2]}")
+    print(" -----")
+    print(f"2{tablero[2][0]}|{tablero[2][1]}|{tablero[2][2]}")
 
 def movimiento_jugador(tablero, jugador):
     while True:
@@ -46,6 +50,7 @@ def movimiento_ia(tablero, jugador):
         tablero[fila][columna] = jugador
 
 def juego_completo():
+    global victorias_x, victorias_o
     tablero = crear_tablero()
     jugador_actual = "X"
     
@@ -61,6 +66,10 @@ def juego_completo():
         if hay_ganador(tablero):
             imprimir_tablero(tablero)
             print(f"¡{jugador_actual} ha ganado!")
+            if jugador_actual == "X":
+                victorias_x = victorias_x + 1
+            else:
+                victorias_o = victorias_o + 1
             break
             
         if tablero_lleno(tablero):
@@ -68,9 +77,17 @@ def juego_completo():
             print("¡Empate!")
             break
             
-        if(jugador_actual== "O"):
-            jugador_actual= "X"
+        if jugador_actual == "O":
+            jugador_actual = "X"
         else:
             jugador_actual = "O"
+    
+    print("Victorias hasta ahora:")
+    print(f"Jugador X: {victorias_x}")
+    print(f"Maquina O: {victorias_o}")
 
-juego_completo()
+while True:
+    juego_completo()
+    repetir = input("¿Quieres jugar otra vez? (s/n): ")
+    if repetir.lower() != "s":
+        break
