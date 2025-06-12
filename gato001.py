@@ -44,6 +44,15 @@ def tablero_lleno(tablero):
     return True
 
 def movimiento_ia(tablero, jugador):
+    for i in range(3):
+        for j in range(3):
+            if tablero[i][j] == " ":
+                tablero[i][j] = "X"  
+                if hay_ganador(tablero): 
+                    tablero[i][j] = "O"  
+                    return
+                tablero[i][j] = " " 
+    
     casillas_vacias = [(i, j) for i in range(3) for j in range(3) if tablero[i][j] == " "]
     if casillas_vacias:
         fila, columna = random.choice(casillas_vacias)
@@ -91,3 +100,4 @@ while True:
     repetir = input("¿Quieres jugar otra vez? (s/n): ")
     if repetir.lower() != "s":
         break
+
