@@ -21,4 +21,4 @@ Consiste en el **Juego del Gato** con mejoras progresivas a través de distintas
 | `v1.1` | Se corrigen funciones duplicadas, como `crear_tablero` e `imprimir_tablero`. |
 | `v1.2` | Mejora en el formato de impresión del tablero y se agrega un contador de victorias con opción de continuar o terminar el juego. | 
 | `v1.3` |Esta mejora hace que la IA bloquee automáticamente al jugador humano cuando está a punto de ganar. Si no hay peligro, la IA sigue jugando al azar como antes. Así evita derrotas tontas y ofrece un desafío mínimo.|
-
+| `v1.4` |Esta version explica como funciona el def movimiento_ia.|
